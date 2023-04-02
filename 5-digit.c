@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-//i didnt understand the "One of the parts is clearly not effective. What can you put here to remove the unnecessary code?" part, so i couldnt do that, but ive done all
+
 int main() 
 {
 
