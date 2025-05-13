@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int temp, address, table[11], inc, value, done_or_not = 0, check = 0;
+    
+    FILE *fp;
+    fp = fopen("D:/bora/t.txt", "r");
+    
+    for (int i = 0; i < 11; i++) table[i] = -1;
+    
+    while (fscanf(fp, "%d", &temp) != EOF) {
+        done_or_not = 0;
+        address = temp % 11;
+        value = temp / 11;
+        inc = 0;
+        
+        while (done_or_not == 0) {
+            if (check < 11) {
+                if (table[(address + inc) % 11] == -1) {
+                    table[(address + inc) % 11] = temp;
+                    check++;
+                    done_or_not = 1;
+                } else {
+                    inc += (value % 11);
+                    if (inc >= 11) {
+                        printf("Table is full, unable to insert %d\n", temp);
+                        done_or_not = 1;
+                    }
+                }
+            } else {
+                printf("Table is full, unable to insert %d\n", temp);
+                done_or_not = 1;
+            }
+        }
+    }
+
+    fclose(fp);
+    
+    printf("LINEAR QUOTIENT OVERFLOW INDEX TABLE\n------------------------------------------------------------\n");
+    for (int a = 0; a < 11; a++) {
+        printf("%5d %5d\n", a, table[a]);
+    }
+    
+    return 0; 
+}
